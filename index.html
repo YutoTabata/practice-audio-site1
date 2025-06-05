@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>録音再生ページ</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    audio { width: 100%; margin-bottom: 10px; }
+    button { margin: 5px; padding: 10px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>0505.mp3（Google Driveから再生）</h1>
+
+  <audio id="audioPlayer" controls>
+    <source src="https://docs.google.com/uc?export=download&id=1ZPePS5cDTRDQ8yGgNAmiEo-4GKs_98gi" type="audio/mp3">
+    お使いのブラウザは audio タグをサポートしていません。
+  </audio>
+
+  <div>
+    <button onclick="seek(-30)">⏪ 30秒戻る</button>
+    <button onclick="seek(-10)">⏪ 10秒戻る</button>
+    <button onclick="togglePlay()">⏯ 再生 / 一時停止</button>
+    <button onclick="seek(10)">⏩ 10秒進む</button>
+    <button onclick="seek(30)">⏩ 30秒進む</button>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    function seek(seconds) {
+      audio.currentTime += seconds;
+    }
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
+</body>
+</html>
